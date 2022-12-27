@@ -1,0 +1,101 @@
+ .border_1 {
+
+     border: 20px solid red;
+ }
+
+ body {
+
+     margin: 0;
+
+     font-weight: 400;
+
+     font-family: Nunito, sans-serif;
+     font-size: .875rem;
+     text-align: left;
+     /* background-color: #f5f6f8 */
+
+     line-height: 1.5;
+     color: #6c757d;
+
+     background-color: #e6e9ee;
+ }
+
+ .card-box {
+
+     background-color: #fff;
+
+     padding: 13px;
+
+
+
+     box-shadow: 0 0.75rem 6rem rgb(56 65 74 / 3%);
+     border-radius: 0.30rem;
+ }
+
+ .drop_chart {
+
+     font-size: 18px;
+
+     float: right;
+ }
+
+ .dropbtn {
+
+     /* background-color: #edeffe; */
+     border: 1px solid black;
+
+     color: black;
+     padding: 2px 2px;
+
+     font-size: 15px;
+ 
+
+     border: none;
+     cursor: pointer;
+
+ }
+
+ .dropdowna {
+
+     position: relative;
+     display: inline-block;
+
+ }
+
+ .dropdown-content {
+
+     display: none;
+
+     position: absolute;
+     background-color: #f1f1f1;
+
+     min-width: 130px;
+     overflow: auto;
+
+     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+     z-index: 1111;
+
+ }
+
+ .dropdown-content a {
+
+     padding: 2px 16px;
+
+     color: black;
+     text-decoration: none;
+     display: block;
+ }
+
+
+ .dropdowna a:hover {
+
+     background-color: #ddd;
+     cursor: pointer;
+
+ }
+
+
+ .show {
+
+     display: block;
+ }

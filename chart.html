@@ -1,0 +1,255 @@
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgp3LIm9Nao@Yz1ztcQTWFspd3yD65VohhpuuComLASJC" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFY1zcLABN1+NEUVF@SA7MsXsP1UyJoMp4YLEUNS FAP+JcXn/twtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- apex chart -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-apexcharts"></script>
+    <link rel="stylesheet" href="chart.css">
+
+    <!-- <script src="jqueery1.js"></script> <script src="jquerry2.js"></script> -->
+    <script>
+
+        var _seed = 42;
+        Math.random = function () {
+            _seed = _seed * 16807 % 2147483647;
+            return (_seed - 1) / 2147483646;
+        };
+    </script>
+</head>
+
+<body>
+    <h1>data</h1>
+    <div class="row">
+        <!-- 1 -->
+        <div class="col-x1-12 col-sm-12">
+            <!--  -->
+            <div class="card card-mini mb-2">
+                <div class="card-body" style="box-shadow: 3px 3px #d4d1d1;" id="graph_1">
+                    <div class="row">
+                        <div class="col-10" class="card-widgets"><span class="shortbox fs-5 text-dark fu-bold ps-4">
+
+                                Score
+
+                            </span> </div>
+
+                        <!-- <div class="col-3 dropdown"> -->
+
+                        <div class="col-2 dropdowna">
+
+                            <button onclick="myFunction_1()" class="dropbtn">Chart Type<i class="fa fa-angle-down"
+                                    style="font-size: 18px;"></i></button>
+                            <div id="myDropdown_1" class="dropdown-content">
+
+                                <a>
+
+                                    <option @click="setType('line')">Line</option>
+
+                                </a>
+
+                                <a>
+
+                                    <option @click="setType('pie')">Pie</option>
+
+                                </a>
+                                <a>
+                                    <option @click="setType('donut')">Dount</option>
+                                </a>
+
+                                <a>
+
+                                    <option @click="setType('bar')">Bar</option>
+
+                                </a>
+
+                                <a>
+
+                                    <option @click="setType('radar')">Radar</option>
+
+                                </a>
+
+                                <a>
+
+                                    <option @click="setType('scatter')">Scatter</option>
+
+                                </a>
+
+                                <a>
+
+                                    <option @click="setType('polarArea')">polarArea</option>
+
+                                </a>
+
+                                <a>
+
+                                    <option @click="setType('heatmap')">HeatMap</option>
+
+                                </a>
+
+                                <a>
+
+                                    <option @click="setType('stack_bar')">stackbar</option>
+
+                                </a>
+
+                                <a>
+
+                                    <option @click="setType('area')">area</option>
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div id="cardCollpase1" class="collapse pt-3 show" dir="ltr">
+
+                        <div>
+
+                            <div>
+
+                                <div id="chart">
+
+                                    <apexchart id="chart_2" width="100%" height="278px" :type="zzType"
+                                        :options="chartOptions" :series="chartSeries" :someProp="redrawChart">
+
+                                    </apexchart>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <script src="chart.js"></script>
+
+
+    <script>
+
+        // graph_1
+
+        graph_data_2 = {
+            series: [
+                //y axis
+                {
+                    name: 'Net ofit',
+
+                    data: [4, 5, 2, 16, 22]
+
+                }, {
+
+                    name: 'Profit',
+
+                    data: [41, 45, 62, 61, 21]
+                }, {
+                    name: 'Net Pr',
+
+                    data: [4, 15, 36, 16]
+                }
+            ],
+            x_data: ["Ja", "Feb", "M", "Apr", "Jun", "Jul", "Au", "ep"],
+            y_label: "data",
+            x_label: "data",
+            color: ["#d11919", "#ee6666", "#efb2b2"],
+            default_gtype: 'bar',
+        }
+
+    </script>
+
+    <script>
+
+        Vue.component('apexchart', VueApexCharts);
+
+        var app = new Vue({
+
+            el: '#graph_1',
+
+            data: getChartData(graph_data_2),
+            methods: getMethod(),
+            computed: {
+                redrawChart() {
+
+                    return this.changeDataType();
+                }
+            }
+        });
+
+        app.setType(graph_data_2.default_gtype)
+
+    </script>
+
+    <script>
+
+        function myFunction_1() {
+
+            document.getElementById("myDropdown_1").classList.toggle("show");
+
+            window.onclick = function (event) {
+
+                if (!event.target.matches('.dropbtn')) {
+                    var dropdowns = document.getElementsByClassName("dropdown-content");
+
+                    var i;
+
+                    for (i = 0; i < dropdowns.length; i++) {
+
+                        var openDropdown = dropdowns[i];
+
+                        if (openDropdown.classList.contains("show")) {
+                            openDropdown.classList.remove('show');
+                        }
+                    }
+                }
+            }
+        }
+
+    </script>
+
+    <!-- <script>
+
+        $(document).ready(function () {
+
+            var table = $('#example').DataTable({
+
+                "paging": true, fixedHeader: { header: true, footer: true }, responsive: true, autowidth: true, aasorting: [[2, 'asc']], cache: true,
+                initComplete: function () { }
+
+            });
+        });
+
+    </script> -->
+
+</body>
+
+</html>
